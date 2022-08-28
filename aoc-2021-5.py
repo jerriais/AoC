@@ -6,8 +6,10 @@ def grab4():
     global counter
     # counter = global counter
     coords = (codes[counter], codes[counter+1], codes[counter+2], codes[counter+3])
-
     print(coords)
+    if coords[0]==coords[2] or coords[1]==coords[3]:
+        print ("vert or hori")
+
     counter = counter + 4
 
 while counter < len(codes):
