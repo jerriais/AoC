@@ -13,14 +13,21 @@ prices = [4,3,2,7,8,9]
 buyday = 0
 sellday = 1
 
-profit = prices[sellday] - prices[buyday]
+def name(args):
+ pass
 
-for=>
+def calculateProfit(sellday, buyday):
+    return prices[sellday] - prices[buyday]
+
+while sellday < len(prices):
+    while buyday < (len(prices)-1):
+        print(calculateProfit(sellday, buyday))
+        buyday += 1
+    sellday += 1
 
 print(max(prices))
 print(min(prices))
-print(prices[0-5])
-print (profit)
+print ("AA")
 
 prevPrice = max(prices)
 
