@@ -3,37 +3,42 @@
 import random
 import time
 
+random.seed(10)
+
 startTime = time.time()
 
-prices = [4,3,2,7,8,9]
-# for i in range(0, 5000):
-#     n = random.randint(1, 1000000)
-#     prices.append(n)
+# prices = [4,3,2,7,8,9]
+prices = []
+for i in range(0, 10):
+    n = random.randint(1, 5000)
+    prices.append(n)
 
-buyday = 0
-sellday = 1
+buyDay = 0
+bestBuyDay = 0
+sellDay = 1
+bestSellDay = 1
 
-def name(args):
- pass
+def calculateProfit(sellDay, buyDay):
+    if sellDay > buyDay:
+        return prices[sellDay] - prices[buyDay]
 
-def calculateProfit(sellday, buyday):
-    return prices[sellday] - prices[buyday]
+maxProfit = calculateProfit(sellDay,buyDay)
 
-while sellday < len(prices):
-    while buyday < (len(prices)-1):
-        print(calculateProfit(sellday, buyday))
-        buyday += 1
-    sellday += 1
+for buyDay in range(len(prices)-1):
+    for sellDay in range(buyDay,len(prices)):
+        if buyDay < sellDay:
+            profit = calculateProfit(sellDay, buyDay)
+            print(buyDay,sellDay,profit)
+            if profit > maxProfit:
+                maxProfit = profit
+                bestBuyDay = buyDay
+                bestSellDay = sellDay
+
 
 print(max(prices))
 print(min(prices))
-print ("AA")
-
-prevPrice = max(prices)
-
-for x in prices:
-    if x > prevPrice:
-        buyPrice = prevPrice
+print ((prices))
+print(bestBuyDay,bestSellDay,maxProfit)
 
 executionTime = (time.time() - startTime) * 1000
 print('Execution time in milliseconds: ' + "{:.2f}".format(executionTime))
